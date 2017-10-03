@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\MALLOC;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USERS;..\FWLib\inc;..\HARDWARE\LED;..\HARDWARE;..\HARDWARE\GPRS;..\HARDWARE\USART2;..\HARDWARE\TIMER;..\HARDWARE\MOTOR</IncludePath>
+              <IncludePath>..\CORE;..\MALLOC;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USERS;..\FWLib\inc;..\HARDWARE\LED;..\HARDWARE;..\HARDWARE\GPRS;..\HARDWARE\USART2;..\HARDWARE\TIMER;..\HARDWARE\MOTOR;..\HARDWARE\MQ153;..\HARDWARE\DHT11;..\HARDWARE\ultrasonic</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -437,6 +437,21 @@
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\MOTOR\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>mq153.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\MQ153\mq153.c</FilePath>
+            </File>
+            <File>
+              <FileName>dht11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\DHT11\dht11.c</FilePath>
+            </File>
+            <File>
+              <FileName>ultrasonic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\ultrasonic\ultrasonic.c</FilePath>
             </File>
           </Files>
         </Group>

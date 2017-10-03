@@ -41,3 +41,6 @@
 ..\obj\led.o: ..\HARDWARE\USART2\usart2.h
 ..\obj\led.o: ..\HARDWARE\TIMER\timer.h
 ..\obj\led.o: ..\HARDWARE\MOTOR\motor.h
+..\obj\led.o: ..\HARDWARE\MQ153\mq153.h
+..\obj\led.o: ..\HARDWARE\DHT11\dht11.h
+..\obj\led.o: ..\HARDWARE\ultrasonic\ultrasonic.h

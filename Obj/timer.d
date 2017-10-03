@@ -41,3 +41,6 @@
 ..\obj\timer.o: ..\HARDWARE\all_head.h
 ..\obj\timer.o: ..\HARDWARE\USART2\usart2.h
 ..\obj\timer.o: ..\HARDWARE\MOTOR\motor.h
+..\obj\timer.o: ..\HARDWARE\MQ153\mq153.h
+..\obj\timer.o: ..\HARDWARE\DHT11\dht11.h
+..\obj\timer.o: ..\HARDWARE\ultrasonic\ultrasonic.h

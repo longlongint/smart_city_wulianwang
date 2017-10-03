@@ -42,3 +42,6 @@
 ..\obj\gprs.o: ..\HARDWARE\TIMER\timer.h
 ..\obj\gprs.o: ..\HARDWARE\MOTOR\motor.h
 ..\obj\gprs.o: ..\HARDWARE\all_head.h
+..\obj\gprs.o: ..\HARDWARE\MQ153\mq153.h
+..\obj\gprs.o: ..\HARDWARE\DHT11\dht11.h
+..\obj\gprs.o: ..\HARDWARE\ultrasonic\ultrasonic.h

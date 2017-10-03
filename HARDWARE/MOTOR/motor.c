@@ -2,7 +2,7 @@
 #include "motor.h"
 
 char kaigai=0;//开盖状态标志
-
+int count=0;
 
 
 /*配置和初始化TIM1 */
@@ -101,8 +101,8 @@ void TIM2_Int_Init(u16 arr,u16 psc)
 
 	//中断优先级NVIC设置
 	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;  //TIM2中断
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;  //先占优先级0级
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;  //从优先级3级
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;  //先占优先级0级
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;  //从优先级3级
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; //IRQ通道被使能
 	NVIC_Init(&NVIC_InitStructure);  //初始化NVIC寄存器
 
@@ -113,17 +113,23 @@ void TIM2_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)  //检查TIM3更新中断发生与否
 		{
-			//guan();
-			TIM1->CCR2=210;
-			TIM1->CCR3=0;
-			delay_ms(1000);
-			kaigai=0;
-			//floating();
-			TIM1->CCR2=0;
-			TIM1->CCR3=0;
-			TIM3->CNT=2;
-			TIM_ClearITPendingBit(TIM2, TIM_IT_Update  );  //清除TIMx的中断待处理位:TIM 中断源 
-			TIM_Cmd(TIM3,DISABLE);  //使能TIMx					 
+			count++;
+			if(count>=10)
+			{
+				distance_count=16000;
+				count=0;
+				//guan();
+				TIM1->CCR2=300;
+				TIM1->CCR3=0;
+				delay_ms(1000);
+				kaigai=0;
+				//floating();
+				TIM1->CCR2=0;
+				TIM1->CCR3=0;
+				//TIM3->CNT=2;
+				TIM_ClearITPendingBit(TIM2, TIM_IT_Update  );  //清除TIMx的中断待处理位:TIM 中断源 
+				TIM_Cmd(TIM2,DISABLE);  //使能TIMx	
+			}
 		}
 }
 
@@ -153,7 +159,7 @@ void hangwai_init(void){
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x02;	//抢占优先级2， 
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x03;					//子优先级3
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;								//使能外部中断通道
-	NVIC_Init(&NVIC_InitStructure); 	
+	NVIC_Init(&NVIC_InitStructure); 
 }
 
 void EXTI9_5_IRQHandler(void)
@@ -161,9 +167,10 @@ void EXTI9_5_IRQHandler(void)
 	delay_ms(50);//消抖
 	if(EXTI_GetITStatus(EXTI_Line7) != RESET){
 		LED=0;
-		if(kaigai==0){
+		if(kaigai==0)
+	  {
 			TIM1->CCR2=0;
-			TIM1->CCR3=240;
+			TIM1->CCR3=300;
 			delay_ms(1000);
 			TIM1->CCR2=0;
 			TIM1->CCR3=0;
@@ -173,6 +180,13 @@ void EXTI9_5_IRQHandler(void)
 			TIM_Cmd(TIM2,ENABLE);  //使能TIMx		
 		}
 		EXTI_ClearITPendingBit(EXTI_Line7);  //清除LINE4上的中断标志位  
+	}
+	if(EXTI_GetITStatus(EXTI_Line5) != RESET)
+	{
+		LED=0;
+		zwdeng=0;
+		my_delay_ms(800);
+		EXTI_ClearITPendingBit(EXTI_Line5);  //清除LINE4上的中断标志位  
 	}
 }
 

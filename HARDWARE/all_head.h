@@ -21,6 +21,10 @@
 #include "usart2.h"
 #include "timer.h"
 #include "motor.h"
+#include "mq153.h"
+#include "dht11.h"
+#include "ultrasonic.h"
+
 
 void all_init(void);
 

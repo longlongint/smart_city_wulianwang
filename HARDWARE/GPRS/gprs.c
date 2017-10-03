@@ -32,7 +32,7 @@ void gprs_init(void)
 	atk_A7_send_cmd("AT+CGDCONT=1,\"IP\",\"CMNET\"\r\n","OK",100);
 	atk_A7_send_cmd("AT+CGACT=1,1\r\n","OK",100);
 	
-	TIM3_Int_Init(19999,7199); //10Khz的计数频率，计数到20000为2s 
+	TIM3_Int_Init(39999,7199); //10Khz的计数频率，计数到40000为4s 
 }
 //A7模块发送命令后,检测接收到的应答
 //str:期待的应答结果
@@ -108,7 +108,7 @@ unsigned char send_TCP_message(char *p)
 {
 		char ch[3];
 		char send_buf[100] = {0};
-		LED=!LED;
+		//LED=!LED;
 		ch[0]=0x1a;ch[1]='\r';ch[2]='\n';
 		memset(send_buf, 0, 100);    //清空
 		strcpy(send_buf, "AT+CIPSTART=\"TCP\",\"");
