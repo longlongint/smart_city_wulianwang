@@ -39,3 +39,6 @@
 ..\obj\gprs.o: ..\HARDWARE\LED\led.h
 ..\obj\gprs.o: ..\HARDWARE\GPRS\gprs.h
 ..\obj\gprs.o: ..\HARDWARE\USART2\usart2.h
+..\obj\gprs.o: ..\HARDWARE\TIMER\timer.h
+..\obj\gprs.o: ..\HARDWARE\MOTOR\motor.h
+..\obj\gprs.o: ..\HARDWARE\all_head.h

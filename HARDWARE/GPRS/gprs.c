@@ -10,12 +10,12 @@ unsigned char SEND_READY=0;
 ******************************************/
 void gprs_init(void)
 {
-	char str_temp[32];
+	//char str_temp[32];
 	if(atk_A7_send_cmd("AT+RST\r\n","OK",100))
 	{
 			atk_A7_send_cmd("AT+RST\r\n","OK",100);
 	}
-
+	
 	/**  检测SIM卡是否准备好 **/
 	if(atk_A7_send_cmd("AT+CPIN?\r\n","READY",100)==1)
 	{
@@ -32,6 +32,7 @@ void gprs_init(void)
 	atk_A7_send_cmd("AT+CGDCONT=1,\"IP\",\"CMNET\"\r\n","OK",100);
 	atk_A7_send_cmd("AT+CGACT=1,1\r\n","OK",100);
 	
+	TIM3_Int_Init(19999,7199); //10Khz的计数频率，计数到20000为2s 
 }
 //A7模块发送命令后,检测接收到的应答
 //str:期待的应答结果
@@ -68,7 +69,7 @@ void atk_A7_at_response(u8 mode)
 //waittime:等待时间(单位:10ms)
 //返回值:0,发送成功(得到了期待的应答结果)
 //       1,发送失败
-u8 atk_A7_send_cmd(u8 *cmd,u8 *ack,u16 waittime)
+char atk_A7_send_cmd(char *cmd,char *ack,u16 waittime)
 {
 	u8 res=0;
 	char *strx;
@@ -87,7 +88,7 @@ u8 atk_A7_send_cmd(u8 *cmd,u8 *ack,u16 waittime)
 				strx=strstr((const char*)USART2_RX_BUF,(const char*)ack);
 				if(strx)
 				{
-					return 0;
+					//return 0;
 					break;//得到有效数据 
 				}
 				USART2_RX_STA=0;
@@ -105,10 +106,9 @@ u8 atk_A7_send_cmd(u8 *cmd,u8 *ack,u16 waittime)
 ****************************************************/
 unsigned char send_TCP_message(char *p)
 {
-		int i=0;
 		char ch[3];
 		char send_buf[100] = {0};
-
+		LED=!LED;
 		ch[0]=0x1a;ch[1]='\r';ch[2]='\n';
 		memset(send_buf, 0, 100);    //清空
 		strcpy(send_buf, "AT+CIPSTART=\"TCP\",\"");
@@ -116,7 +116,7 @@ unsigned char send_TCP_message(char *p)
 		strcat(send_buf, "\",");
 		strcat(send_buf, port_num);
 		strcat(send_buf, "\r\n");
-		if(atk_A7_send_cmd(send_buf,"OK",200))
+		if(atk_A7_send_cmd(send_buf,"OK",400))
 		{
 			printf("connet failed?\n");my_delay_ms(5);
 			atk_A7_send_cmd(send_buf,"OK",200);
@@ -132,12 +132,10 @@ unsigned char send_TCP_message(char *p)
 }
 char close_TCP_connet(void)
 {
-	if(atk_A7_send_cmd("AT+CIPCLOSE\r\n", "OK",100))
-	{
+	if(atk_A7_send_cmd("AT+CIPCLOSE\r\n", "OK",100)){
 		return 1;
 	}
-	else
-	{
+	else{
 		return 0;
 	}
 }

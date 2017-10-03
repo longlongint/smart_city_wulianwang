@@ -39,3 +39,5 @@
 ..\obj\main.o: ..\HARDWARE\GPRS\gprs.h
 ..\obj\main.o: ..\HARDWARE\all_head.h
 ..\obj\main.o: ..\HARDWARE\USART2\usart2.h
+..\obj\main.o: ..\HARDWARE\TIMER\timer.h
+..\obj\main.o: ..\HARDWARE\MOTOR\motor.h

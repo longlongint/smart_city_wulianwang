@@ -40,3 +40,4 @@
 ..\obj\timer.o: ..\HARDWARE\GPRS\gprs.h
 ..\obj\timer.o: ..\HARDWARE\all_head.h
 ..\obj\timer.o: ..\HARDWARE\USART2\usart2.h
+..\obj\timer.o: ..\HARDWARE\MOTOR\motor.h

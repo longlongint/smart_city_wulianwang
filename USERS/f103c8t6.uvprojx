@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\MALLOC;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USERS;..\FWLib\inc;..\HARDWARE\LED;..\HARDWARE;..\HARDWARE\GPRS;..\HARDWARE\USART2;..\HARDWARE\TIMER</IncludePath>
+              <IncludePath>..\CORE;..\MALLOC;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USERS;..\FWLib\inc;..\HARDWARE\LED;..\HARDWARE;..\HARDWARE\GPRS;..\HARDWARE\USART2;..\HARDWARE\TIMER;..\HARDWARE\MOTOR</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -432,6 +432,11 @@
               <FileName>all_init.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\all_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\MOTOR\motor.c</FilePath>
             </File>
           </Files>
         </Group>

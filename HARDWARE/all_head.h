@@ -19,7 +19,8 @@
 #include "led.h"
 #include "gprs.h"
 #include "usart2.h"
-
+#include "timer.h"
+#include "motor.h"
 
 void all_init(void);
 

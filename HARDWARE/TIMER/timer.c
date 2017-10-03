@@ -31,8 +31,8 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 //定时器3中断服务程序
 void TIM3_IRQHandler(void)   //TIM3中断
 {
-	int i;
-	char *up_msg=NULL;
+	//int i;
+	//char *up_msg=NULL;
 	if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)  //检查TIM3更新中断发生与否
 		{
 			send_TCP_message("test\r\n");

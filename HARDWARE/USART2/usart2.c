@@ -5,9 +5,9 @@
 #include "string.h"	
 #include "all_head.h"
 //串口发送缓存区 	
-__align(8) u8 USART2_TX_BUF[USART2_MAX_SEND_LEN]; 	//发送缓冲,最大USART2_MAX_SEND_LEN字节 	  
+__align(8) char USART2_TX_BUF[USART2_MAX_SEND_LEN]; 	//发送缓冲,最大USART2_MAX_SEND_LEN字节 	  
 //串口接收缓存区 	
-u8 USART2_RX_BUF[USART2_MAX_RECV_LEN]; 				//接收缓冲,最大USART2_MAX_RECV_LEN个字节.
+char USART2_RX_BUF[USART2_MAX_RECV_LEN]; 				//接收缓冲,最大USART2_MAX_RECV_LEN个字节.
 unsigned char backstage=0;
 
 //通过判断接收连续2个字符之间的时间差不大于10ms来决定是不是一次连续的数据.
@@ -126,7 +126,7 @@ void TIM4_IRQHandler(void)
 		USART2_RX_STA|=1<<15;	//标记接收完成
 		TIM4->SR&=~(1<<0);		//清除中断标志位	
 		//if(backstage)
-		LED=!LED;
+		//LED=!LED;
 		analyse(USART2_RX_BUF);
 		TIM4_Set(0);			//关闭TIM4  
 	}
@@ -170,7 +170,7 @@ void TIM4_Init(u16 arr,u16 psc)
 	
 }   
 void analyse(char *p){
-	char *str=NULL;
+	//char *str=NULL;
 	printf(USART2_RX_BUF);
 	
 }
