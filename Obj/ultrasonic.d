@@ -37,11 +37,11 @@
 ..\obj\ultrasonic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\ultrasonic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\ultrasonic.o: ..\HARDWARE\LED\led.h
-..\obj\ultrasonic.o: ..\HARDWARE\GPRS\gprs.h
-..\obj\ultrasonic.o: ..\HARDWARE\all_head.h
 ..\obj\ultrasonic.o: ..\HARDWARE\USART2\usart2.h
 ..\obj\ultrasonic.o: ..\HARDWARE\TIMER\timer.h
 ..\obj\ultrasonic.o: ..\HARDWARE\MOTOR\motor.h
+..\obj\ultrasonic.o: ..\HARDWARE\all_head.h
 ..\obj\ultrasonic.o: ..\HARDWARE\MQ153\mq153.h
 ..\obj\ultrasonic.o: ..\HARDWARE\DHT11\dht11.h
 ..\obj\ultrasonic.o: ..\HARDWARE\ultrasonic\ultrasonic.h
+..\obj\ultrasonic.o: ..\HARDWARE\esp8266\esp8266.h

@@ -3,7 +3,7 @@
 
 
 void LED_Init(void);
-#define LED PBout(12)		// PB12
+#define LED PCout(13)		// PC13
 
 #endif
 

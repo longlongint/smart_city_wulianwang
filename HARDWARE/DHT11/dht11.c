@@ -10,7 +10,7 @@ void DHT11_Rst(void)
 {
 	DHT11_IO_OUT(); 	//SET OUTPUT
     DHT11_DQ_OUT=0; 	//拉低DQ
-    delay_ms(20);    	//拉低至少18ms
+    my_delay_ms(20);    	//拉低至少18ms
     DHT11_DQ_OUT=1; 	//DQ=1 
 	delay_us(30);     	//主机拉高20~40us
 }
@@ -77,6 +77,7 @@ u8 DHT11_Read_Data(u8 *temp,u8 *humi)
 {        
  	u8 buf[5];
 	u8 i;
+	//printf("dth11_star\n");
 	DHT11_Rst();
 	if(DHT11_Check()==0)
 	{
@@ -90,6 +91,7 @@ u8 DHT11_Read_Data(u8 *temp,u8 *humi)
 			*temp=buf[2];
 		}
 	}else return 1;
+		//printf("dth11_end\n");
 	return 0;	    
 }
 //初始化DHT11的IO口 DQ 同时检测DHT11的存在
@@ -104,7 +106,7 @@ u8 DHT11_Init(void)
  	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;				 //PG11端口配置
  	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //推挽输出
  	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
- 	GPIO_Init(GPIOG, &GPIO_InitStructure);				 //初始化IO口
+ 	GPIO_Init(GPIOB, &GPIO_InitStructure);				 //初始化IO口
  	GPIO_SetBits(GPIOB,GPIO_Pin_11);						 //PG11 输出高
 			    
 	DHT11_Rst();  //复位DHT11

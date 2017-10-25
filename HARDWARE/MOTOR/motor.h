@@ -3,7 +3,7 @@
 
 #include "all_head.h"
 
-extern char kaigai;//开盖状态标志
+extern int kaigai;//开盖状态标志
 
 void TIM1_PWM_Init(void);
 static void TIM1_GPIO_Config(void);

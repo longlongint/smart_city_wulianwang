@@ -36,11 +36,11 @@
 ..\obj\all_init.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\all_init.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\all_init.o: ..\HARDWARE\LED\led.h
-..\obj\all_init.o: ..\HARDWARE\GPRS\gprs.h
-..\obj\all_init.o: ..\HARDWARE\all_head.h
 ..\obj\all_init.o: ..\HARDWARE\USART2\usart2.h
 ..\obj\all_init.o: ..\HARDWARE\TIMER\timer.h
 ..\obj\all_init.o: ..\HARDWARE\MOTOR\motor.h
+..\obj\all_init.o: ..\HARDWARE\all_head.h
 ..\obj\all_init.o: ..\HARDWARE\MQ153\mq153.h
 ..\obj\all_init.o: ..\HARDWARE\DHT11\dht11.h
 ..\obj\all_init.o: ..\HARDWARE\ultrasonic\ultrasonic.h
+..\obj\all_init.o: ..\HARDWARE\esp8266\esp8266.h

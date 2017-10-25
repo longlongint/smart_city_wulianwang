@@ -57,6 +57,7 @@ void USART2_IRQHandler(void)
 		res=USART2->DR; 			 
 		if((USART2_RX_STA&(1<<15))==0)		//还可以接收数据
 		{
+			//printf("%c\n",res);
 			TIM4->CNT=0;         					//计数器清空
 			if(USART2_RX_STA==0)TIM4_Set(1);	 	//使能定时器4的中断 
 			USART2_RX_BUF[USART2_RX_STA++]=res;		//记录接收到的值	 
@@ -109,8 +110,8 @@ void u2_printf(char* fmt,...)
 	va_start(ap,fmt);
 	vsprintf((char*)USART2_TX_BUF,fmt,ap);
 	va_end(ap);
-	printf("\n           串口2:");
-	printf(USART2_TX_BUF);
+	//printf("\n        USART2:");my_delay_ms(100);
+	//printf(USART2_TX_BUF);
 	i=strlen((const char*)USART2_TX_BUF);		//此次发送数据的长度 
 	for(j=0;j<i;j++)							//循环发送数据
 	{
@@ -120,13 +121,11 @@ void u2_printf(char* fmt,...)
 }
 //定时器4中断服务程序		    
 void TIM4_IRQHandler(void)
-{ 	
+{
 	if(TIM4->SR&0X01)//是更新中断
 	{	 			   
 		USART2_RX_STA|=1<<15;	//标记接收完成
 		TIM4->SR&=~(1<<0);		//清除中断标志位	
-		//if(backstage)
-		//LED=!LED;
 		analyse(USART2_RX_BUF);
 		TIM4_Set(0);			//关闭TIM4  
 	}
@@ -171,8 +170,7 @@ void TIM4_Init(u16 arr,u16 psc)
 }   
 void analyse(char *p){
 	//char *str=NULL;
-	printf(USART2_RX_BUF);
-	
+	//printf(USART2_RX_BUF);my_delay_ms(200);
 }
 
 

@@ -37,10 +37,10 @@
 ..\obj\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\timer.o: ..\HARDWARE\LED\led.h
-..\obj\timer.o: ..\HARDWARE\GPRS\gprs.h
-..\obj\timer.o: ..\HARDWARE\all_head.h
 ..\obj\timer.o: ..\HARDWARE\USART2\usart2.h
 ..\obj\timer.o: ..\HARDWARE\MOTOR\motor.h
+..\obj\timer.o: ..\HARDWARE\all_head.h
 ..\obj\timer.o: ..\HARDWARE\MQ153\mq153.h
 ..\obj\timer.o: ..\HARDWARE\DHT11\dht11.h
 ..\obj\timer.o: ..\HARDWARE\ultrasonic\ultrasonic.h
+..\obj\timer.o: ..\HARDWARE\esp8266\esp8266.h

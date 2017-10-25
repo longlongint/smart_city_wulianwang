@@ -57,7 +57,7 @@ void atk_A7_at_response(u8 mode)
 	if(USART2_RX_STA&0X8000)		//接收到一次数据了
 	{ 
 		USART2_RX_BUF[USART2_RX_STA&0X7FFF]=0;//添加结束符
-		printf("%s",USART2_RX_BUF);	//发送到串口
+		printf("%s",USART2_RX_BUF);my_delay_ms(1);	//发送到串口
 		if(mode)USART2_RX_STA=0;
 	} 
 }
@@ -91,6 +91,7 @@ char atk_A7_send_cmd(char *cmd,char *ack,u16 waittime)
 					//return 0;
 					break;//得到有效数据 
 				}
+				printf(USART2_RX_BUF);
 				USART2_RX_STA=0;
 			}
 		}
@@ -118,14 +119,15 @@ unsigned char send_TCP_message(char *p)
 		strcat(send_buf, "\r\n");
 		if(atk_A7_send_cmd(send_buf,"OK",400))
 		{
-			printf("connet failed?\n");my_delay_ms(5);
+			printf("connet failed?\n");
+			my_delay_ms(5);
 			atk_A7_send_cmd(send_buf,"OK",200);
 		}
 		
 		u2_printf("AT+CIPSEND\r\n");
 		my_delay_ms(40);
-		atk_A7_send_cmd(p,p,20);
-		atk_A7_send_cmd(ch,ch,20);
+		atk_A7_send_cmd(p,p,10);
+		atk_A7_send_cmd(ch,ch,10);
 		my_delay_ms(20);
 		atk_A7_send_cmd("AT+CIPCLOSE\r\n", "OK",40);
 		return 1;
@@ -135,7 +137,8 @@ char close_TCP_connet(void)
 	if(atk_A7_send_cmd("AT+CIPCLOSE\r\n", "OK",100)){
 		return 1;
 	}
-	else{
+	else
+	{
 		return 0;
 	}
 }

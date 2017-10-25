@@ -8,6 +8,7 @@
 	          *****************************/
 /******************************************/
 
+extern int max_shengdu;
 
 //------------------------------------------------------------ÒÆÖ²ÐÞ¸ÄÇø-----------------------------------------------------------------------
 #include "all_head.h"
@@ -28,8 +29,6 @@ extern unsigned int distance_count;
 extern char  foul_smell_flag;
 void Ultran_Init(void);
 void Ultra_Ranging(float *p);
-
-void TIM7_Int_Init(u16 arr,u16 psc);
 
 
 

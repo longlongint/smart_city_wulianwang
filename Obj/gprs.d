@@ -45,3 +45,4 @@
 ..\obj\gprs.o: ..\HARDWARE\MQ153\mq153.h
 ..\obj\gprs.o: ..\HARDWARE\DHT11\dht11.h
 ..\obj\gprs.o: ..\HARDWARE\ultrasonic\ultrasonic.h
+..\obj\gprs.o: ..\HARDWARE\esp8266\esp8266.h
